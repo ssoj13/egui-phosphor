@@ -7,7 +7,11 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/amPerl/egui-phosphor"
 
 [dependencies]
-egui = { version = "0.35", default-features = false }
+# FORK NOTE (ssoj13): this fork exists ONLY to repoint egui from crates.io (which is wgpu 29) to
+# emilk/egui `main` (wgpu 30). cglibs consumes egui + all egui-adjacent crates from git so a single
+# egui resolves in the lock with NO `[patch.crates-io]`. Upstream = amPerl/egui-phosphor. To bump:
+# `cargo update` (this tracks emilk/egui main). See colmap-rs/docs/egui-wgpu-bump.md.
+egui = { git = "https://github.com/emilk/egui", branch = "main", default-features = false }
 
 [features]
 default = ["regular"]
